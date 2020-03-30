@@ -1,0 +1,43 @@
+ {% extends 'base.html' %}
+  {% load static %}
+ {% block title %}
+    Search Result {{search_term}}
+ {% endblock title %}
+
+{% block content %}
+    <h3 class="heading font-weight-light">Here is your search results for "{{search_term}}"</h3>
+    <hr />
+     <div class="row">
+            
+            {% if contacts %}
+            {% for contact in contacts %} 
+            <div class="col-md-3">
+             <div class="card mb-4 box-shadow">
+               <a href="{% url 'detail' contact.id  %}"> <img class="card-img-top" src="{% if contact.image %}
+                  {{contact.image.url}}
+                  {% else %}
+                {% static 'images/female3.png' %}
+                {% endif %}
+                " alt="Card image cap" height="200" width="100"></a>
+                <div class="alert alert-warning"><i class = "icon icon ion-ios-analytics"></i> {{contact.fullname}}</div>
+                <div class="card-body">
+                  <p class="card-text"><i class="icon ion-email-unread"></i> {{contact.email}}</p>
+                  <p><i class="icon ion-ipad"></i>{{contact.phone}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{% url 'details' contact.id %}"> <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></a>
+                    </div>
+                    <small class="text-muted">{{search_result}}</small>
+                 
+              </div>
+            </div>  
+            </div></div>
+            {% endfor %}       
+            {% else %}
+            <h3 class="heading font-weight-light">There is no search result for the name <b>"{{search_term}}"</b> </h3>
+            {% endif %}
+              
+              </div>
+            </div>
+          </div>
+{% endblock content %}

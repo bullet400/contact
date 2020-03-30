@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{%block title %}
+Delete {{contacts}}
+{% endblock title %}
+{% block content %}
+{% load crispy_forms_tags %}
+    <div class="container">
+        <h3 class="heading font-weight-light text-center">SignUp</h3>
+        <hr />
+    </div>
+    <div class="container w-25 card p-8 mt-8">
+        <div class="col-md-12">
+        <form action="" method="POST" enctype="multipart/form-data" class="form-group">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" class="w-100 text-red text-center my-2 btn btn-success" value="Login">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

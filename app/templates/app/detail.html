@@ -1,0 +1,45 @@
+ {% extends 'base.html' %}
+ {% load static %}
+ {% block title %}
+    Detailed 
+ {% endblock title %}
+  
+{% block content %}
+    
+  {% if contacts.Manager == request.user %}
+    <div class="container">
+    <h4 class="text-center">Here are the detail of {{contacts.fullname}}</h6>
+    </div>  
+   <div class="row">
+    <div class="col-md-3"> 
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{contacts.image.url}}" alt="Card image cap" height="200" width="100">
+                <div class="alert alert-info"><i class = "icon icon ion-ios-analytics"></i>{{contacts.firstname}}</div>
+                <div class="card-body">
+                  <p class="card-text"><i class="icon ion-email-unread"></i> {{contacts.email}}</p>
+                  <p><i class="icon ion-ipad"></i> {{contacts.phone}}</p>           
+                  <div class="d-flex justify-content-between align-items-center">
+                    
+                    <small class="text-muted">9 mins</small>{{contacts.Manager}}
+                  </div></div></div></div>
+                  <div class="col-md-6">
+                  <h3 class="heading font-weight-light">Welcome to the detail of {{contacts.fullname}}</h3>
+                  <hr />
+                  <h3 class="text-left font-weight-light"> Date Added is : <b>{{contacts.datecreated}}</b></h3>
+                  <h3 class="text-left font-weight-light"> First Name: {{contacts.firstname}}</h3>
+                  <h3 class="text-left font-weight-light"> Middle Name: {{contacts.middlename}}</h3>
+                  <h3 class="text-left font-weight-light"> Last Name: {{contacts.lastname}}</h3>
+                  <h3 class="text-left font-weight-light"> Gender: {{contacts.gender}}</h3>
+                  <hr />
+                  <h3 class="heading font-weight-light">Information: {{contacts.info}} 
+                  <hr /><div class="alert alert-success text-center"> {{contacts.Manager}}</div>
+                    </div>
+                    <div class="col-md-3">
+                    <a href="{% url 'update' contacts.id %}"><button type="button" class="btn btn-sm btn-outline-success">Update</button></a>
+                     <a href="{% url 'delete' contacts.id %}"><button type="button" class="btn btn-sm btn-outline-danger">Delete</button></a>
+                    </div>
+    {% else %}
+    <h3 class="tex-center">There is either no contact registered in the system or you have no contact associated to your account </h3>       
+    {% endif %}
+            
+{% endblock content %}

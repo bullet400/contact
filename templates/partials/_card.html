@@ -1,0 +1,53 @@
+   {% load static %}
+
+   {% if contact.gender == "female" %}      
+      <div class="col-md-3">
+              <div class="card mb-4 box-shadow">
+               <a href="{% url 'detail' contact.id  %}"> <img class="card-img-top" src="{% if contact.image %}
+                  {{contact.image.url}}
+                  {% else %}
+                {% static 'images/female3.png' %}
+                {% endif %}
+                " alt="Card image cap" height="200" width="100"></a>
+                <div class="alert alert-warning"><i class = "icon icon ion-ios-analytics"></i> {{contact.fullname}}</div>
+                <div class="card-body">
+                  <p class="card-text"><i class="icon ion-email-unread"></i> {{contact.email}}</p>
+                  <p><i class="icon ion-ipad"></i>{{contact.phone}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{% url 'detail' contact.id %}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                     <!--<a href="{% url 'update' contact.id %}"> <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></a>-->
+                    </div>
+                    <small class="text-muted">{{age}}</small>!!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+   {% else %}
+      <div class="col-md-3">
+              <div class="card mb-4 box-shadow">
+              <a href="{% url 'detail' contact.id %}">  <img class="card-img-top" src="{% if contact.image %}
+                  {{contact.image.url}}
+                  {% else %}
+                  {% static 'images/male.jfif' %}
+                  {% endif %}
+                " alt="Card image cap" height="200" width="100"></a>
+                <div class="alert alert-info"><i class = "icon icon ion-ios-analytics"></i> {{contact.fullname}}</div>
+                <div class="card-body">
+                  <p class="card-text"><i class="icon ion-email-unread"></i> {{contact.email}}</p>
+                  <p><i class="icon ion-ipad"></i>{{contact.phone}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                     <a href="{% url 'detail' contacts.id %}"><button type="button" class="btn btn-sm btn-outline-secondary">Views</button></a>
+                    
+                     
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+     
+{% endif %}

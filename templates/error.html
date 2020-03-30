@@ -1,0 +1,55 @@
+ {% extends 'base.html' %}
+ {% load static %}
+ {% block title %}
+    Detailed 
+ {% endblock title %}
+  
+{% block content %}
+    <h6>Here are the list of contact</h6>
+   <div class="row">
+    <div class="col-md-3">
+    {% if contacts %}
+    {% for contact in contacts %}
+      {% if contact.gender == "male" %}
+      
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{% static 'images/female3.png' %}" alt="Card image cap" height="200" width="100">
+                <div class="alert alert-info"><i class = "icon icon ion-ios-analytics"></i>{{contact.firstname}}</div>
+                <div class="card-body">
+                  <p class="card-text"><i class="icon ion-email-unread"></i> {{contact.email}}</p>
+                  <p><i class="icon ion-ipad"></i> {{contact.phone}}</p>           
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div></div></div></div>
+            {% else %} 
+      {% endif %}
+          {% endfor %}
+            {% endif %}    
+              
+            
+{% endblock content %}
+
+
+
+<h6>Here are the list of contact</h6>
+   <div class="row">
+    <div class="col-md-3"> 
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{contact.image.url}}" alt="Card image cap" height="200" width="100">
+                <div class="alert alert-info"><i class = "icon icon ion-ios-analytics"></i>{{contact.firstname}}</div>
+                <div class="card-body">
+                  <p class="card-text"><i class="icon ion-email-unread"></i> {{contact.email}}</p>
+                  <p><i class="icon ion-ipad"></i> {{contact.phone}}</p>           
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div></div></div></div>
+           
+              

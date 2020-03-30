@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{%block title %}
+Update{{Contact}}
+{% endblock title %}
+{% block content %}
+{% load crispy_forms_tags %}
+    
+    <div class="container w-30 card p-12 mt-12">
+        <div class="col-md-12">
+        <h3 class="heading font-weight-light">logged out
+        but you can login using this link <a href="{% url 'login' %}">Login</h3>
+    </div>
+</div>
+
+{% endblock %}
